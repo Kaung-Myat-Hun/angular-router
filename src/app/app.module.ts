@@ -22,8 +22,12 @@ import { HeroesModule } from './heroes/heroes.module';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    HeroesModule,
+    RouterModule.forRoot([
+      {path:'hero-list', component: HeroListComponent},
+      {path: 'crisis-list', component: CrisisListComponent},
+      {path:'' , redirectTo: '/hero-list', pathMatch: 'full'},
+      {path: '**', component: PageNotFoundComponent}
+    ])
   ],
   bootstrap: [AppComponent]
 })
